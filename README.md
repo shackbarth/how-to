@@ -1,7 +1,4 @@
-how-to
-======
-
 Tutorials
 ---------
 
-# [Asynchronous Programming](./tree/master/async)
+* [Asynchronous Programming](./tree/master/async)

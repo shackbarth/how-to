@@ -1,5 +1,5 @@
 Callbacks are nothing to fear!
-==============================
+------------------------------
 
 Getting used to asynchronous programming with callbacks isn't easy if you're
 coming from a more classical language where the control flow runs from
