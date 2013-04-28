@@ -272,7 +272,7 @@ var myModel = {
 
       // call the trigger if there is one
       if(that._eventCallback) {
-        that._eventCallback(that);
+        that._eventCallback(that.attributes);
       }
 
       // call the callback if there is one
@@ -297,6 +297,7 @@ enyo.kind({
     alert("Model contents are now " + JSON.stringify(value));
   },
   run: function () {
+    // look! No callback here anymore!
     this.getValue().save("baz", "foo");
   },
   valueChanged: function() {
