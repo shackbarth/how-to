@@ -83,8 +83,9 @@ itself as the parameter. No parens.
 
 Okay, so why would we ever want to write code like this? Why not just use a 
 return value, like before? Well, consider if the value "foo" is actually
-on the server, and the sendFooToCallback function has an asynchronous 
-call to the server, which we'll mimic by a simple timeout.
+on the server, and the sendFooToCallback (now sendContentToCallback)
+function has an asynchronous call to the server, which we'll mimic by 
+a simple timeout.
 
 ```javascript
 var sendContentToCallback = function (callback) {
@@ -102,7 +103,7 @@ sendContentToCallback(printItOut);
 ```
 
 If you're coming from a classical background you might be inclined to try
-to capture some sort of return value from sendFooToCallback, like
+to capture some sort of return value from sendContentToCallback, like
 
 ```javascript
 var sendContentToCallback = function (callback) {
@@ -120,9 +121,9 @@ var isThisFoo = sendContentToCallback(printItOut);
 alert(isThisFoo);
 ```
 
-This is hopeless. sendFooToCallback just isn't going to know about foo by the
-time it returns. That return value is typically going to be useless, which is
-why we need to use callbacks in the first place.
+This is hopeless. sendContentToCallback just isn't going to know about foo by 
+the time it returns. That return value is typically going to be useless, which 
+is why we need to use callbacks in the first place.
 
 Okay, so let's start working towards our enyo/backbone implementation, by
 putting these functions in objects that can talk to each other.
