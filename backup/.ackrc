@@ -1,0 +1,3 @@
+--type-set=js=.js,.json
+--ignore-dir=deploy
+--ignore-dir=node_modules
