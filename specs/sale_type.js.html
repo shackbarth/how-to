@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: sale_type.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: sale_type.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/*jshint indent:2, curly:true, eqeqeq:true, immed:true, latedef:true,
+newcap:true, noarg:true, regexp:true, undef:true, strict:true, trailing:true,
+white:true*/
+/*global XV:true, XT:true, _:true, console:true, XM:true, Backbone:true, require:true, assert:true,
+setTimeout:true, before:true, clearTimeout:true, exports:true, it:true, describe:true, beforeEach:true */
+
+(function () {
+  "use strict";
+
+  var async = require("async"),
+    _ = require("underscore"),
+    smoke = require("../lib/smoke"),
+    common = require("../lib/common"),
+    assert = require("chai").assert;
+
+  /**
+    Sale Type
+    @class
+    @alias SaleType
+    @property {String} code
+    @property {String} description
+    @property {SalesEmailProfile} emailProfile
+    @property {SaleTypeCharacteristicCollection} characteristics
+    @property {SalesTypeWorkflow} workflow
+    @property {String} defaultHoldType
+  */
+  var spec = {
+    recordType: "XM.SaleType",
+    collectionType: "XM.SaleTypeCollection",
+    cacheName: null,
+    listKind: "XV.SaleTypeList",
+    instanceOf: "XM.Document",
+    isLockable: true,
+    idAttribute: "code",
+    enforceUpperKey: true,
+    attributes: ["code", "description", "characteristics", "workflow",
+      "emailProfile", "defaultHoldType"],
+    extensions: ["sales"],
+    privileges: {
+      createUpdate: "MaintainSaleTypes",
+      read: true
+    },
+    createHash: {
+      code: "TESTSALE" + Math.random(),
+      description: "Test Sale Type"
+    },
+    updatableField: "description"
+  };
+
+  var additionalTests = function () {
+    describe("Sale type characteristics", function () {
+      /**
+        @member -
+        @memberof SaleType.prototype
+        @description Characteristics can be associated with sale types.
+      */
+      it("is a SaleTypeCharacteristic", function () {
+        var model;
+
+        assert.isFunction(XM.SaleTypeCharacteristic);
+        model = new XM.SaleTypeCharacteristic();
+        assert.isTrue(model instanceof XM.CharacteristicAssignment);
+      });
+      /**
+        @member -
+        @memberof SaleType.prototype
+        @description The available characteristic types are shared with sales orders
+      */
+      it.skip("uses isSalesOrders as its context attribute", function () {
+      });
+    });
+    describe("SaleTypeWorkflow", function () {
+      var saleTypeModel,
+        workflowSourceModel;
+
+      before(function (done) {
+        async.parallel([
+          function (done) {
+            common.initializeModel(saleTypeModel, XM.SaleType, function (err, model) {
+              saleTypeModel = model;
+              saleTypeModel.set(spec.createHash);
+              done();
+            });
+          },
+          function (done) {
+            common.initializeModel(workflowSourceModel, XM.SaleTypeWorkflow, function (err, model) {
+              workflowSourceModel = model;
+              done();
+            });
+          }
+        ], done);
+      });
+
+
+      it("can get added to a sale type", function (done) {
+        assert.isTrue(workflowSourceModel.isReady());
+        workflowSourceModel.set({
+          name: "First step",
+          priority: XM.priorities.models[0]
+        });
+        saleTypeModel.get("workflow").add(workflowSourceModel);
+        assert.isUndefined(JSON.stringify(saleTypeModel.validate(saleTypeModel.attributes)));
+        saleTypeModel.save(null, {success: function () {
+          done();
+        }});
+      });
+
+      /**
+        @member -
+        @memberof SaleType.prototype
+        @description Sales order workflow types can be "Credit Check", "Pack" (inventory only),
+          "Ship" (inventory only), and "Other" (default)
+      */
+      it("workflow type other is default", function () {
+        assert.equal(workflowSourceModel.get("workflowType"), XM.SalesOrderWorkflow.TYPE_OTHER);
+      });
+      it("workflow types are credit check, pack , ship, and other", function () {
+        assert.isString(XM.SalesOrderWorkflow.TYPE_OTHER);
+        assert.isString(XM.SalesOrderWorkflow.TYPE_CREDIT_CHECK);
+        // TODO :implement in inventory
+        //assert.isString(XM.SalesOrderWorkflow.TYPE_PACK);
+        //assert.isString(XM.SalesOrderWorkflow.TYPE_SHIP);
+      });
+      it("you can set the workflow type", function () {
+        workflowSourceModel.set({workflowType: XM.SalesOrderWorkflow.TYPE_SHIP});
+        assert.isUndefined(workflowSourceModel.validate(workflowSourceModel.attributes));
+      });
+
+
+    });
+  };
+
+  exports.spec = spec;
+  exports.additionalTests = additionalTests;
+
+}());
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <a href="index.html">Index</a><h3>Business Objects</h3><ul><li><a href="Honorific.html">Honorific</a></li><li><a href="Invoice.html">Invoice</a></li><li><a href="InvoiceLine.html">InvoiceLine</a></li><li><a href="Item.html">Item</a></li><li><a href="SalesEmailProfile.html">SalesEmailProfile</a></li><li><a href="SalesOrder.html">SalesOrder</a></li><li><a href="SaleType.html">SaleType</a></li><li><a href="Terms.html">Terms</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Nov 26 2013 15:14:21 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

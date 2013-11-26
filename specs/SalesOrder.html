@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Business Object: SalesOrder</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Business Object: SalesOrder</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+    Overview
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Sales Order Description
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Specifications</h3>
+        
+        <dl>
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>Sales orders are lockable.
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>The ID attribute is "number", which will be automatically uppercased.
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>Used in the sales module
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>Sales Orders can be read by people with "ViewSalesOrders"
+       and can be created, updated,
+       or deleted by users with the "MaintainSalesOrders" privilege.
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>Characteristics can be assigned as being for sales orders
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>When the sale type changes, the default hold type of the sale type
+          will get copied to the sales order.
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>When the sale type changes, the characteristics of the new sale type
+          are copied over to the sales order.
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>When the sale type changes, the workflow sources of the new sale type
+          are transformed into workflow items for the sales order.
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>The due date for "Pack" workflow items will default to the "Pack date" on
+          the order. Changing the Pack Date will update "Pack" workflow item's due date
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>The due date for "Ship" workflow items will default to the schedule
+          date on the header. If that date changes, "Ship" workflow items will be updated.
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>When hold type of an order is changed to "None", all credit
+          check type workflow items will be marked completed.
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        
+            <ul>
+<dt>
+    
+      <h4 class="name" id="SalesOrderCharacteristic"><span class="type-signature"></span>SalesOrderCharacteristic<span class="type-signature"></span></h4>
+    
+    
+    
+</dt>
+<dd>
+    
+      <li>Follows the convention for characteristics
+    
+    
+    
+
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>Characteristic</li>
+        </ul>
+    </dd>
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+</ul>
+        </dl>
+    
+    
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <a href="index.html">Index</a><h3>Business Objects</h3><ul><li><a href="Honorific.html">Honorific</a></li><li><a href="Invoice.html">Invoice</a></li><li><a href="InvoiceLine.html">InvoiceLine</a></li><li><a href="Item.html">Item</a></li><li><a href="SalesEmailProfile.html">SalesEmailProfile</a></li><li><a href="SalesOrder.html">SalesOrder</a></li><li><a href="SaleType.html">SaleType</a></li><li><a href="Terms.html">Terms</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Tue Nov 26 2013 15:14:21 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
