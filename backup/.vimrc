@@ -1,6 +1,5 @@
 set background=dark
-colorscheme ir_black
-" colorscheme nazca
+colorscheme twilight
 set nocompatible
 " set autoindent
 set smartindent
@@ -31,10 +30,14 @@ autocmd BufWritePre *.js :%s/function(/function (/e
 autocmd BufWritePre *.js :%s/for(/for (/e
 autocmd BufWritePre *.js :%s/if(/if (/e
 
+autocmd! BufWritePost *.js JSHint
+
 " no BOM
 autocmd BufWritePre *.sql :set nobomb
 
 call pathogen#infect()
+call pathogen#helptags()
 " map nerdtree for convenience
 map <F2> :NERDTreeToggle<cr>
 map <F5> :w<cr>:JSHint<cr>:cw<cr>
+map <c-t> :tabnew 

@@ -1,3 +1,5 @@
 --type-set=js=.js,.json
 --ignore-dir=deploy
+--ignore-dir=build
 --ignore-dir=node_modules
+--ignore-dir=lib/enyo-x/lib
