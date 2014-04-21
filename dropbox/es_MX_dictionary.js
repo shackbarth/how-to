@@ -6,7 +6,7 @@
       "strings": [
         {
           "key": "_crm",
-          "source": "CRM",
+          "source": "CRMTest",
           "target": "CRM"
         },
         {
