@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/shackbarth/git/xtuple/enyo-client/extensions/source/oauth2/test'
+let g:netrw_dirhist_2='/home/shackbarth/git/xtuple-extensions'
+let g:netrw_dirhist_3='/home/shackbarth/git/private-extensions/source/inventory/foundation-database/frozen'
+let g:netrw_dirhist_4='/home/shackbarth/git/private-extensions/source/manufacturing/database'
+let g:netrw_dirhist_5='/home/shackbarth/git/private-extensions/source/manufacturing/database/source'
+let g:netrw_dirhist_6='/home/shackbarth/git/xtuple/scripts/lib'
